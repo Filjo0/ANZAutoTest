@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
-using ANZAuto.UnitTest.Pages;
-using ANZAuto.UnitTest.Utilities;
+using ANZAutoTest.Pages;
+using ANZAutoTest.Utilities;
 using log4net;
 using log4net.Config;
 using NUnit.Framework;
 
-namespace ANZAuto.UnitTest.Tests
+namespace ANZAutoTest.Tests
 {
     [TestFixture]
     public class ExchangeRateTest : BaseSetup
@@ -18,9 +18,10 @@ namespace ANZAuto.UnitTest.Tests
         {
             XmlConfigurator.Configure();
 
-            Logger.Debug("Starting Exchange_Rate_Does_Not_Increase_15_Percents Test...");
-
             ExchangeRatesPage.GoToExchangeRatesPage();
+            if (!ExchangeRatesPage.IsAtExchangeRatesPage) return;
+
+            Logger.Debug("Starting Exchange_Rate_Does_Not_Increase_15_Percents Test...");
 
             foreach (var currency in ExchangeRatesPage.GetCurrencies())
             {

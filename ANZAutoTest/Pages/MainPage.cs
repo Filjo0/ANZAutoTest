@@ -1,6 +1,6 @@
-﻿using ANZAuto.UnitTest.Selenium;
+﻿using ANZAutoTest.Selenium;
 
-namespace ANZAuto.UnitTest.Pages
+namespace ANZAutoTest.Pages
 {
     internal static class MainPage
     {

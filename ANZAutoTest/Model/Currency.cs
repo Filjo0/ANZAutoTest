@@ -1,4 +1,4 @@
-﻿namespace ANZAuto.UnitTest.Model
+﻿namespace ANZAutoTest.Model
 {
     public class Currency
     {

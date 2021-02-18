@@ -6,23 +6,27 @@ using OpenQA.Selenium;
 
 namespace ANZAutoTest.Pages
 {
-    public static class ExchangeRatesPagev1
+    public static class ExchangeRatesPage
     {
         private static readonly List<Currency> ListOfCurrencies = new List<Currency>();
 
+        private static IWebElement useSearchToGoToExchangeRatesPage =
+            Driver.Instance.FindElement(By.CssSelector("input#searchinput"));
+
+        private static IWebElement buttonSearchToGoToExchangeRatesPage =
+            Driver.Instance.FindElement(By.CssSelector("button#searchsubmit"));
+
+        private static void SearchForExchangeRate()
+        {
+            useSearchToGoToExchangeRatesPage.SendKeys("foreign exchange rate");
+            buttonSearchToGoToExchangeRatesPage.Click();
+        }
+
         public static void GoToExchangeRatesPage()
         {
-            var useSearchToGoToExchangeRatesPage = Driver.Instance.FindElement(By.CssSelector("input#searchinput"));
-            useSearchToGoToExchangeRatesPage.SendKeys("foreign exchange rate");
+            SearchForExchangeRate();
 
-            var buttonSearchToGoToExchangeRatesPage =
-                Driver.Instance.FindElement(By.CssSelector("button#searchsubmit"));
-            buttonSearchToGoToExchangeRatesPage.Click();
-
-
-            var linkToGoToExchangeRatesPage =
-                Driver.Instance.FindElement(By.LinkText("ANZ Foreign Exchange Rates Page"));
-            linkToGoToExchangeRatesPage.Click();
+            Driver.Instance.FindElement(By.LinkText("ANZ Foreign Exchange Rates Page")).Click();
         }
 
         public static bool IsAtExchangeRatesPage

@@ -1,7 +1,8 @@
-﻿using ANZAuto.UnitTest.Selenium;
+﻿using ANZAutoTest.Pages;
+using ANZAutoTest.Selenium;
 using NUnit.Framework;
 
-namespace ANZAuto.UnitTest.Utilities
+namespace ANZAutoTest.Utilities
 {
     [TestFixture]
     public class BaseSetup
@@ -10,6 +11,7 @@ namespace ANZAuto.UnitTest.Utilities
         public void Init()
         {
             Driver.Initialize();
+            MainPage.GoTo();
         }
 
         [TearDown]

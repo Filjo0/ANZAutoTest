@@ -3,7 +3,7 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace ANZAuto.UnitTest.Selenium
+namespace ANZAutoTest.Selenium
 {
     public static class Driver
     {
