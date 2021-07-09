@@ -1,35 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ANZAutoTest.Model;
-using ANZAutoTest.Selenium;
+using ANZAutomation.Model;
+using ANZAutomation.Selenium;
 using OpenQA.Selenium;
 
-namespace ANZAutoTest.Pages
+namespace ANZAutomation.Pages
 {
     public static class ExchangeRatesPage
     {
         private static readonly List<Currency> ListOfCurrencies = new List<Currency>();
-
-        private static IWebElement useSearchToGoToExchangeRatesPage =
-            Driver.Instance.FindElement(By.CssSelector("input#searchinput"));
-
-        private static IWebElement buttonSearchToGoToExchangeRatesPage =
-            Driver.Instance.FindElement(By.CssSelector("button#searchsubmit"));
-
-        private static void SearchForExchangeRate()
+        
+        public static void GoTo()
         {
-            useSearchToGoToExchangeRatesPage.SendKeys("foreign exchange rate");
-            buttonSearchToGoToExchangeRatesPage.Click();
+            RatesPage.GoTo();
+            RatesPage.SwitchToForeignExchangeRates();
         }
 
-        public static void GoToExchangeRatesPage()
-        {
-            SearchForExchangeRate();
-
-            Driver.Instance.FindElement(By.LinkText("ANZ Foreign Exchange Rates Page")).Click();
-        }
-
-        public static bool IsAtExchangeRatesPage
+        public static bool IsAt
         {
             get
             {

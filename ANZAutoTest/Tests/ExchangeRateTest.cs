@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
-using ANZAutoTest.Pages;
-using ANZAutoTest.Utilities;
+using ANZAutomation.Pages;
+using ANZAutomation.Utilities;
 using log4net;
 using log4net.Config;
 using NUnit.Framework;
@@ -18,8 +18,8 @@ namespace ANZAutoTest.Tests
         {
             XmlConfigurator.Configure();
 
-            ExchangeRatesPage.GoToExchangeRatesPage();
-            if (!ExchangeRatesPage.IsAtExchangeRatesPage) return;
+            ExchangeRatesPage.GoTo();
+            if (!ExchangeRatesPage.IsAt) return;
 
             Logger.Debug("Starting Exchange_Rate_Does_Not_Increase_15_Percents Test...");
 
