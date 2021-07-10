@@ -6,4 +6,4 @@ The project also includes the log4net logging.
 - Install Google Chrome
 - Update Chrome driver in NuGet Packages if needed
 - Open ExchangeRateTest.cs from ANZAutoTest
-- Run tests
+- Run tests to verify that the ANZ buy and sell exchange currency rates difference does not exceed 15%. If the difference is greater than 15% - then an error will be logged.
