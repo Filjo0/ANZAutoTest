@@ -5,7 +5,7 @@ using log4net;
 using log4net.Config;
 using NUnit.Framework;
 
-namespace ANZAutomation.Utilities
+namespace ANZAutoTest.Utilities
 {
     [TestFixture]
     public class BaseSetup
@@ -18,7 +18,6 @@ namespace ANZAutomation.Utilities
         {
             Driver.Initialize();
             XmlConfigurator.Configure();
-            
         }
 
         [SetUp]

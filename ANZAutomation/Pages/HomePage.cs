@@ -1,4 +1,5 @@
-﻿using ANZAutomation.Selenium;
+﻿using System;
+using ANZAutomation.Selenium;
 using OpenQA.Selenium;
 
 namespace ANZAutomation.Pages

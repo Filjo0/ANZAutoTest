@@ -1,5 +1,5 @@
 ﻿using ANZAutomation.Pages;
-using ANZAutomation.Utilities;
+using ANZAutoTest.Utilities;
 using NUnit.Framework;
 
 namespace ANZAutoTest.Tests
