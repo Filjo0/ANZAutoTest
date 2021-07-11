@@ -9,25 +9,24 @@ namespace ANZAutomation.Pages
     public static class ExchangeRatesPage
     {
         private static readonly List<Currency> ListOfCurrencies = new List<Currency>();
-        
+
         public static void GoTo()
         {
+            if (IsAt()) return;
+            HomePage.SearchForRates();
             RatesPage.GoTo();
             RatesPage.SwitchToForeignExchangeRates();
         }
 
-        public static bool IsAt
+        private static bool IsAt()
         {
-            get
-            {
-                var headerOfTheExchangeRatesPage = Driver.Instance.FindElements(By.CssSelector("div#M1Pheader1"));
+            var headerOfTheExchangeRatesPage = Driver.Instance.FindElements(By.CssSelector("div#M1Pheader1"));
 
-                var doesHeaderOfTheExchangeRatesPageExist =
-                    headerOfTheExchangeRatesPage.Any(element =>
-                        element.Text.Equals("Foreign Exchange Rates - Australia"));
+            var doesHeaderOfTheExchangeRatesPageExist =
+                headerOfTheExchangeRatesPage.Any(element =>
+                    element.Text.Equals("Foreign Exchange Rates - Australia"));
 
-                return doesHeaderOfTheExchangeRatesPageExist;
-            }
+            return doesHeaderOfTheExchangeRatesPageExist;
         }
 
 

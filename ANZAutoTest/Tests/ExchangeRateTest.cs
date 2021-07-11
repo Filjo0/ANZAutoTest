@@ -11,9 +11,8 @@ namespace ANZAutoTest.Tests
         public void Exchange_Rate_Does_Not_Increase_15_Percents()
         {
             ExchangeRatesPage.GoTo();
-            if (!ExchangeRatesPage.IsAt) return;
 
-            Log.Debug("Starting Exchange_Rate_Does_Not_Increase_15_Percents Test...");
+            Log.Debug("Starting" + TestContext.CurrentContext.Test.Name);
 
             foreach (var currency in ExchangeRatesPage.GetCurrencies())
             {
