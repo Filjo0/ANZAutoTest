@@ -16,6 +16,7 @@ namespace ANZAutomation.Pages
             HomePage.SearchForRates();
             RatesPage.GoTo();
             RatesPage.SwitchToForeignExchangeRates();
+            Driver.TakeScreenshot();
         }
 
         private static bool IsAt()
