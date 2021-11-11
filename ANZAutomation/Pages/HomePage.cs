@@ -1,5 +1,4 @@
-﻿using System;
-using ANZAutomation.Selenium;
+﻿using ANZAutomation.Selenium;
 using OpenQA.Selenium;
 
 namespace ANZAutomation.Pages
@@ -9,10 +8,13 @@ namespace ANZAutomation.Pages
         /// <summary>
         /// Uses search to find the 'Rates' page
         /// </summary>
+        private static void EnterSearch(string input) => Driver.Instance.FindElement(By.CssSelector("input#searchinput")).SendKeys(input);
+        private static void SubmitSearch() => Driver.Instance.FindElement(By.CssSelector("button#searchsubmit")).Click();
+
         public static void SearchForRates()
         {
-            Driver.Instance.FindElement(By.CssSelector("input#searchinput")).SendKeys("Rates, fees, terms and taxes");
-            Driver.Instance.FindElement(By.CssSelector("button#searchsubmit")).Click();
+            EnterSearch("Rates, fees, terms and taxes");
+            SubmitSearch();
         }
 
         /// <summary>

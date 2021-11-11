@@ -1,4 +1,4 @@
-﻿namespace ANZAutoTest.Navigation
+﻿namespace ANZAutomation.Navigation
 {
     public class NavigationPanel
     {

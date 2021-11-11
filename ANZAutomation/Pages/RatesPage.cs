@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace ANZAutomation.Pages
 {
-    public class RatesPage
+    public static class RatesPage
     {
         /// <summary>
         /// Goes to the Rates page.
@@ -12,8 +12,11 @@ namespace ANZAutomation.Pages
         public static void GoTo()
         {
             HomePage.SearchForRates();
-            Driver.Instance.FindElement(By.LinkText("Rates, fees, terms and taxes | ANZ")).Click();
 
+            Driver.Instance.FindElement(By.LinkText("Rates, fees, terms and taxes")).Click();
+
+            Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.First()).Close();
+            Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.Last());
         }
 
         /// <summary>

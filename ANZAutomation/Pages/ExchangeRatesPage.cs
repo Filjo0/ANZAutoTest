@@ -13,7 +13,7 @@ namespace ANZAutomation.Pages
         public static void GoTo()
         {
             if (IsAt()) return;
-            HomePage.SearchForRates();
+            HomePage.GoTo();
             RatesPage.GoTo();
             RatesPage.SwitchToForeignExchangeRates();
             Driver.TakeScreenshot();
@@ -31,7 +31,7 @@ namespace ANZAutomation.Pages
         }
 
 
-        public static IEnumerable<Currency> GetCurrencies()
+        private static IEnumerable<Currency> GetCurrencies()
         {
             GetOddRows();
             GetEvenRows();
@@ -43,10 +43,11 @@ namespace ANZAutomation.Pages
             var evenRows =
                 Driver.Instance.FindElements(
                     By.CssSelector("tr.EvenRow"));
+
             foreach (var evenRow in evenRows)
             {
-                var currBuy = evenRow.FindElements(By.TagName("td"))[5];
-                var currSell = evenRow.FindElements(By.TagName("td"))[8];
+                var currBuy = evenRow.FindElements(By.TagName("td"))[3];
+                var currSell = evenRow.FindElements(By.TagName("td"))[6];
 
                 if (!float.TryParse(currBuy.Text, out _) || !float.TryParse(currSell.Text, out _)) continue;
 
@@ -62,10 +63,11 @@ namespace ANZAutomation.Pages
             var oddRows =
                 Driver.Instance.FindElements(
                     By.CssSelector("tr.OddRow"));
+
             foreach (var oddRow in oddRows)
             {
-                var currBuy = oddRow.FindElements(By.TagName("td"))[5];
-                var currSell = oddRow.FindElements(By.TagName("td"))[8];
+                var currBuy = oddRow.FindElements(By.TagName("td"))[3];
+                var currSell = oddRow.FindElements(By.TagName("td"))[6];
 
                 if (!double.TryParse(currBuy.Text, out _) || !double.TryParse(currSell.Text, out _)) continue;
 
@@ -73,6 +75,17 @@ namespace ANZAutomation.Pages
                 var curr = new Currency(currName.Text, float.Parse(currBuy.Text), float.Parse(currSell.Text),
                     Currency.GetPercentage(float.Parse(currBuy.Text), float.Parse(currSell.Text)));
                 ListOfCurrencies.Add(curr);
+            }
+        }
+        public static void CheckCurrencies()
+        {
+            foreach (var currency in GetCurrencies())
+            {
+                Driver.Log.Info(currency);
+                if (currency.Percentage > 15.0)
+                {
+                    Driver.Log.Error(currency + " higher than 15%");
+                }
             }
         }
     }

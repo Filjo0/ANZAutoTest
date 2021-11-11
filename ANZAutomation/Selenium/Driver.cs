@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading;
-using NUnit.Framework;
+using log4net;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -8,6 +9,9 @@ namespace ANZAutomation.Selenium
 {
     public static class Driver
     {
+        public static readonly ILog Log = LogManager.GetLogger
+            (MethodBase.GetCurrentMethod().DeclaringType);
+
         public static IWebDriver Instance { get; private set; }
 
         public static string BaseAddress => "https://www.anz.com.au/";

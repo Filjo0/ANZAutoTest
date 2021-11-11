@@ -1,7 +1,5 @@
-﻿using System.Reflection;
-using ANZAutomation.Pages;
+﻿using ANZAutomation.Pages;
 using ANZAutomation.Selenium;
-using log4net;
 using log4net.Config;
 using NUnit.Framework;
 
@@ -10,14 +8,12 @@ namespace ANZAutoTest.Utilities
     [TestFixture]
     public class BaseSetup
     {
-        protected static readonly ILog Log = LogManager.GetLogger
-            (MethodBase.GetCurrentMethod().DeclaringType);
-
         [SetUp]
         public void Init()
         {
             Driver.Initialize();
             XmlConfigurator.Configure();
+            Driver.Log.Debug("Starting" + TestContext.CurrentContext.Test.Name);
         }
 
         [SetUp]

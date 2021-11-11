@@ -2,13 +2,13 @@
 {
     public class Currency
     {
-        public string CodeName { get; set; }
+        private string CodeName { get; set; }
 
-        public float Buy { get; set; }
+        private float Buy { get; set; }
 
-        public float Sell { get; set; }
+        private float Sell { get; set; }
 
-        public float Percentage;
+        public readonly float Percentage;
 
         public Currency(string codeName, float buy, float sell, float percentage)
         {
