@@ -26,8 +26,7 @@
 
         public override string ToString()
         {
-            return "Code of currency: " + CodeName + " | Buy Rate: " + Buy + " | Sell Rate: " + Sell +
-                   " | Rate difference: " + Percentage;
+            return "Code of currency: " + CodeName + " | Buy Rate: " + Buy + " | Sell Rate: " + Sell + " | Rate difference: " + Percentage;
         }
     }
 }

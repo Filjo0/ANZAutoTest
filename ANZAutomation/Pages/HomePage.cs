@@ -1,5 +1,5 @@
 ﻿using ANZAutomation.Selenium;
-using OpenQA.Selenium;
+using By = Selenium.WebDriver.Extensions.By;
 
 namespace ANZAutomation.Pages
 {
@@ -8,8 +8,9 @@ namespace ANZAutomation.Pages
         /// <summary>
         /// Uses search to find the 'Rates' page
         /// </summary>
-        private static void EnterSearch(string input) => Driver.Instance.FindElement(By.CssSelector("input#searchinput")).SendKeys(input);
-        private static void SubmitSearch() => Driver.Instance.FindElement(By.CssSelector("button#searchsubmit")).Click();
+        private static void EnterSearch(string input) => Driver.Instance.FindElement(By.JQuerySelector("input#searchinput")).SendKeys(input);
+
+        private static void SubmitSearch() => Driver.Instance.FindElement(By.JQuerySelector("button#searchsubmit")).Click();
 
         public static void SearchForRates()
         {
