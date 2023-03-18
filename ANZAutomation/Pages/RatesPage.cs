@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using ANZAutomation.Selenium;
+﻿using ANZAutomation.Selenium;
 using OpenQA.Selenium;
 
 namespace ANZAutomation.Pages
@@ -15,10 +14,9 @@ namespace ANZAutomation.Pages
 
             Driver.Instance.FindElement(By.LinkText("Rates, fees, terms and taxes")).Click();
 
-            Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.First()).Close();
-            Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.Last());
+            Driver.SwitchToNewTab();
         }
-
+        
         /// <summary>
         /// Switches to the 'Foreign Exchange Rates' page.
         /// </summary>
@@ -26,8 +24,7 @@ namespace ANZAutomation.Pages
         {
             Driver.Instance.FindElement(By.LinkText("Foreign exchange rates")).Click();
 
-            Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.First()).Close();
-            Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.Last());
+            Driver.SwitchToNewTab();
         }
     }
 }

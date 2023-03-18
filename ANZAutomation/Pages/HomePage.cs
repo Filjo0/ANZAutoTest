@@ -1,17 +1,10 @@
 ﻿using ANZAutomation.Selenium;
-using By = Selenium.WebDriver.Extensions.By;
+using Selenium.WebDriver.Extensions;
 
 namespace ANZAutomation.Pages
 {
     public static class HomePage
     {
-        /// <summary>
-        /// Uses search to find the 'Rates' page
-        /// </summary>
-        private static void EnterSearch(string input) => Driver.Instance.FindElement(By.JQuerySelector("input#searchinput")).SendKeys(input);
-
-        private static void SubmitSearch() => Driver.Instance.FindElement(By.JQuerySelector("button#searchsubmit")).Click();
-
         public static void SearchForRates()
         {
             EnterSearch("Rates, fees, terms and taxes");
@@ -25,5 +18,12 @@ namespace ANZAutomation.Pages
         {
             Driver.Instance.Navigate().GoToUrl(Driver.BaseAddress);
         }
+        
+        /// <summary>
+        /// Uses search to find the 'Rates' page
+        /// </summary>
+        private static void EnterSearch(string input) => Driver.Instance.FindElement(By.JQuerySelector("input#searchinput")).SendKeys(input);
+
+        private static void SubmitSearch() => Driver.Instance.FindElement(By.JQuerySelector("button#searchsubmit")).Click();
     }
 }

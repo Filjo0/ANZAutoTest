@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using log4net;
@@ -37,6 +38,12 @@ namespace ANZAutomation.Selenium
             var screenshot = screenshotDriver.GetScreenshot();
             Instance.Manage().Window.Maximize();
             screenshot.SaveAsFile(DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + ".png", ScreenshotImageFormat.Png);
+        }
+
+        public static void SwitchToNewTab()
+        {
+            Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.First()).Close();
+            Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.Last());
         }
     }
 }

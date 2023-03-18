@@ -22,7 +22,6 @@ namespace ANZAutomation.Pages
         private static bool IsAt()
         {
             var headerOfTheExchangeRatesPage = Driver.Instance.FindElements(By.JQuerySelector("div#M1Pheader1"));
-
             var doesHeaderOfTheExchangeRatesPageExist = headerOfTheExchangeRatesPage.Any(element => element.Text.Equals("Foreign Exchange Rates - Australia"));
 
             return doesHeaderOfTheExchangeRatesPageExist;
